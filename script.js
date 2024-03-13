@@ -23,24 +23,24 @@ function resetTimer() {
   updateDisplay();
   document.getElementById('startStopBtn').textContent = 'Start';
   isRunning = false;
-  showMessage("Stopwatch resetovan.");
 }
 
 function updateDisplay() {
+  seconds++;
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+    if (minutes === 60) {
+      minutes = 0;
+      hours++;
+    }
+  }
   const display = document.getElementById('display');
   display.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
 }
 
 function pad(value) {
   return value < 10 ? '0' + value : value;
-}
-
-function showMessage(message) {
-  const messageElement = document.getElementById('message');
-  messageElement.textContent = message;
-  setTimeout(() => {
-    messageElement.textContent = '';
-  }, 3000); // Prikaz poruke 3 sekunde, a zatim je ukloni
 }
 
 document.getElementById('startStopBtn').addEventListener('click', startStop);
