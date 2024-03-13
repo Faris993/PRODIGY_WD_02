@@ -38,3 +38,9 @@ body {
     background-color: #39803d;
   }
   
+  #message {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+  
